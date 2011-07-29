@@ -21,7 +21,7 @@
 				 
                 //code to be inserted here
                 //you can access the value like this
-                // alert(o.padding);
+                alert(o.margin);
              
             });
         }
