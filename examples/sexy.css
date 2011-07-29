@@ -1,3 +1,107 @@
 @charset "UTF-8";
 /* CSS Document */
 
+/* =Portfolio */
+.sexySlider-list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}
+
+.sexySlider-list li {
+    margin: 0 0 10px 0;
+    padding: 0;
+}
+
+.sexySlider-list img {
+    width: 450px;
+}
+
+.js .sexySlider-container {
+    clear: both;
+    position: relative;
+    padding-top: 15px;
+}
+
+.js .sexySlider-outer {
+    position: relative;
+    height: 575px;
+    width: 450px;
+    overflow: hidden;
+    margin-left: 10px;
+}
+
+.js .sexySlider-list {
+    position: absolute;
+    height: 600px;
+    top: 0;
+    left: -450px;
+    width: 3000px;
+}
+
+.js .sexySlider-list li {
+    width: 450px;
+    float: left;
+    z-index: 10;
+}
+
+.js .sexySlider-list img {
+    width: 450px;
+    border: none;
+    margin-top: 10px;
+}
+
+.js .sexySlider-box {
+    position: absolute;
+    border: 10px solid #DFDDD9;
+    width: 450px;
+    height: 252px;
+    left: 0;
+    top: 15px;
+    padding: 0;
+}
+
+.js .sexySlider-container .sexySlider-links {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 406px;
+      z-index: 10000;
+}
+
+.js.home .sexySlider-container {
+      height: 270px;
+}
+
+.js.home .sexySlider-outer {
+    height: 275px;
+}
+
+.js.home .sexySlider-list {
+    height: 270px;
+}
+
+.js.home .sexySlider-container .sexySlider-links {
+      height: 270px;
+}
+
+.js .sexySlider-container .lnk-next, .js .sexySlider-container .lnk-prev {
+    position: absolute;
+    top: 120px;
+    width: 64px;
+    height: 64px;
+    z-index: 10001;
+    text-indent: -9000px;
+    overflow: hidden;
+}
+
+.js .sexySlider-container .lnk-next {
+    right: 20px;
+    background: url('sliderbuttonright.png') no-repeat 0 0;
+}
+
+.js .sexySlider-container .lnk-prev {
+    left: 20px;
+    background: url('sliderbuttonleft.png') no-repeat 0 0;
+}
