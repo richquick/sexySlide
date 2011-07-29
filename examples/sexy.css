@@ -29,7 +29,7 @@
     position: relative;
     height: 575px;
     width: 450px;
-    overflow: hidden;
+    /* overflow: hidden; */
     margin-left: 10px;
 }
 
@@ -106,4 +106,37 @@
 .js .sexySlide-container .lnk-prev {
     left: 10px;
     background: url('sexyArrows.png') no-repeat 0 0;
+}
+
+
+@media only screen 
+and (min-width : 900px) {
+
+
+/* =Layout */
+
+.js .sexySlide-box {
+	width: 750px;
+}
+
+.js .slide img {
+    width: 750px;
+}
+
+.js .sexySlide-outer {
+    width: 750px;
+}
+
+.js .slide {
+    left: -750px;
+}
+
+.js .sexySlide-container {
+	width: 770px;
+}
+
+.js .slide li {
+    width: 750px;
+}
+
 }

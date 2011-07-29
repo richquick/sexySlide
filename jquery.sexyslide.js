@@ -22,17 +22,17 @@
  
             return this.each(function() {
                 var o = options;
-                var $this = $(this);
+                var slideDrawer = $(this);
 				
 				// Wrap 
-				$this.wrap('<div class="sexySlide-outer" />').parent().wrap('<div class="sexySlide-container" />').before('<div class="sexySlide-box" />');
+				slideDrawer.wrap('<div class="sexySlide-outer" />').parent().wrap('<div class="sexySlide-container" />').before('<div class="sexySlide-box" />');
 				
 				var slideContainer = $('.sexySlide-container'); // So we can reuse it
 				slideContainer.prepend('<div class="sexySlide-links"><a href="#" class="lnk-next">next</a><a href="#" class="lnk-prev">prev</a></div>');
 				
                	if (o.thumbs == true) {
 					// Duplicate the slide drawer as another list, so we can use for thumbnails
-					thumbList = $this.html();
+					thumbList = slideDrawer.html();
 					thumbList = '<ul class="sexySlide-thumbs">' + thumbList + '</ul>';
 					slideContainer.append(thumbList);
 					
@@ -43,11 +43,11 @@
 				var sexyBox = $('.sexySlide-box');
 				
 				// Work out the size of the list
-				var sexySize = $this.children("li").length;
+				var sexySize = slideDrawer.children("li").length;
 				
 				// Duplicate the last LI at the start of the list
-				var lastLI = '<li>' + $('li:last-child', $this).html() + '</li>';
-				$this.prepend(lastLI);
+				var lastLI = '<li>' + $('li:last-child', slideDrawer).html() + '</li>';
+				slideDrawer.prepend(lastLI);
 				
 				// Duration of the slide, in thousandths of a second
 				slideTime = o.slideTime;
@@ -75,7 +75,7 @@
 				
 				// Set the size of the slide drawer
 				var drawerSize = (sexySize + 1) * sexyBox.width();
-				$this.attr('style', 'width: ' + drawerSize + 'px;');
+				slideDrawer.attr('style', 'width: ' + drawerSize + 'px;');
 				
 				// Adjust various meansurements if the layout is resized
 
@@ -84,13 +84,16 @@
 					if (sexyBoxSize != sexyBox.width()) {
 						sexyBoxSize = sexyBox.width();
 						slideDistance = sexyBoxSize;
-						drawerSize = (sexySize + 1) * sexyBoxSize;
-						$this.css('width', drawerSize + 'px;');
+						drawerSize = ((sexySize + 1) * sexyBoxSize);
+						
+						slideDrawer.attr('style', 'width: ' + drawerSize + 'px;');
 						if (currentPos <= 0) {
-							$this.attr('style', 'left: 0px;');
+							slideDrawer.attr('style', 'left: 0px;');
 						} else {
-							$this.attr('style', 'left: -' + (currentPos * slideDistance) +  'px;');
+							slideDrawer.attr('style', 'left: -' + (currentPos * slideDistance) +  'px;');
 						}
+						
+						
 					}
 				});
 				
@@ -101,19 +104,19 @@
 				slideMe = function (direction) {
 					// Distance of the slide, in pixels - calculated based on width of the page / holding box
 					var slideDistance = sexyBox.width();
-					var textShow = $this.attr('style') + ' : ' + slideDistance + ' : ' + currentPos + ' : ' + sexySize + ' : ' + direction;
+					var textShow = slideDrawer.attr('style') + ' : ' + slideDistance + ' : ' + currentPos + ' : ' + sexySize + ' : ' + direction;
 				
 					// If we've reached the end OR beginning of the list AND we're going forward, go back to the beginning
 					if ((currentPos >= sexySize || currentPos <= 0) && direction == '-') {
-						$this.attr('style', 'left: 0px; width: ' + drawerSize + 'px;');
+						slideDrawer.attr('style', 'left: 0px; width: ' + drawerSize + 'px;');
 						currentPos = 0;
 					} else if ((currentPos >= sexySize || currentPos <= 0) && direction == '+') {
 						// If we've reached the end OR beginning of the list AND we're going backwards, go forward to the end
-						$this.attr('style', 'left: -' + (sexySize * slideDistance) +  'px; width: ' + drawerSize + 'px;');
+						slideDrawer.attr('style', 'left: -' + (sexySize * slideDistance) +  'px; width: ' + drawerSize + 'px;');
 						currentPos = sexySize;
 					}
 					
-					$this.animate({
+					slideDrawer.animate({
 						left: direction + '=' + slideDistance
 					}, slideTime, function() {
 						// Animation complete.
@@ -152,19 +155,19 @@
 					// Then use multiply the slideDistance by the multiplier
 					
 					slideDistance = slideDistance * slideMultiplier;
-					var textShow = $this.attr('style') + ' : ' + slideDistance + ' : ' + currentPos + ' : ' + sexySize + ' : ' + direction;
+					var textShow = slideDrawer.attr('style') + ' : ' + slideDistance + ' : ' + currentPos + ' : ' + sexySize + ' : ' + direction;
 					
 					// If we've reached the end OR beginning of the list AND we're going forward, go back to the beginning
 					if ((currentPos >= sexySize || currentPos <= 0) && direction == '-') {
-						$this.attr('style', 'left: 0px; width: ' + drawerSize + 'px;');
+						slideDrawer.attr('style', 'left: 0px; width: ' + drawerSize + 'px;');
 						currentPos = 0;
 					} else if ((currentPos >= sexySize || currentPos <= 0) && direction == '+') {
 						// If we've reached the end OR beginning of the list AND we're going backwards, go forward to the end
-						$this.attr('style', 'left: -' + (sexySize * slideDistance) +  'px; width: ' + drawerSize + 'px;');
+						slideDrawer.attr('style', 'left: -' + (sexySize * slideDistance) +  'px; width: ' + drawerSize + 'px;');
 						currentPos = sexySize;
 					}
 					
-					$this.animate({
+					slideDrawer.animate({
 						left: direction + '=' + slideDistance
 					}, slideTime, function() {
 						// Animation complete.
@@ -209,17 +212,21 @@
 				var slideButtonNext = $('.lnk-next');
 				var slideButtonPrev = $('.lnk-prev');
 				
-				/*
+				
 				$('.sexySlide-links').hover(
 				  function () {
-					slideButtonNext.fadeIn("fast");
-					slideButtonPrev.fadeIn("fast");
+					if(o.iconsFade == true) {
+						slideButtonNext.fadeIn("fast");
+						slideButtonPrev.fadeIn("fast");
+					}
 				  }, 
 				  function () {
-					slideButtonNext.fadeOut("fast");
-					slideButtonPrev.fadeOut("fast");
+					  if(o.iconsFade == true) {
+						slideButtonNext.fadeOut("fast");
+						slideButtonPrev.fadeOut("fast");
+					  }
 				  }
-				);*/
+				);
 				
 				// Slide an element
 				slideButtonNext.click(function(){
