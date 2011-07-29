@@ -108,6 +108,23 @@
     background: url('sexyArrows.png') no-repeat 0 0;
 }
 
+.sexySlide-thumbs {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+}
+
+.sexySlide-thumbs li {
+	margin: 0;
+	padding: 0;
+	text-indent: -9000px;
+}
+
+.sexySlide-thumbs img {
+	width: 100px;
+	text-indent: -9000px;
+}
+
 
 @media only screen 
 and (min-width : 900px) {
