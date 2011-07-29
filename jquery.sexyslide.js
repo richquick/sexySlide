@@ -86,7 +86,7 @@
 						slideDistance = sexyBoxSize;
 						drawerSize = ((sexySize + 1) * sexyBoxSize);
 						
-						slideDrawer.attr('style', 'width: ' + drawerSize + 'px;');
+						slideDrawer.attr('style', 'width: ' + drawerSize + 'px !important;');
 						if (currentPos <= 0) {
 							slideDrawer.attr('style', 'left: 0px;');
 						} else {
