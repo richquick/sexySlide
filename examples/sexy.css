@@ -2,18 +2,19 @@
 /* CSS Document */
 
 /* =Portfolio */
-.sexySlider-list {
+.slider {
     margin: 0;
     padding: 0;
     list-style-type: none;
 }
 
-.sexySlider-list li {
+.slider li {
     margin: 0 0 10px 0;
     padding: 0;
+	list-style-type: none;
 }
 
-.sexySlider-list img {
+.slider img {
     width: 450px;
 }
 
@@ -31,7 +32,7 @@
     margin-left: 10px;
 }
 
-.js .sexySlider-list {
+.js .slider {
     position: absolute;
     height: 600px;
     top: 0;
@@ -39,13 +40,13 @@
     width: 3000px;
 }
 
-.js .sexySlider-list li {
+.js .slider li {
     width: 450px;
     float: left;
     z-index: 10;
 }
 
-.js .sexySlider-list img {
+.js .slider img {
     width: 450px;
     border: none;
     margin-top: 10px;
@@ -78,7 +79,7 @@
     height: 275px;
 }
 
-.js.home .sexySlider-list {
+.js.home .slider {
     height: 270px;
 }
 
