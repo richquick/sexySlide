@@ -85,13 +85,14 @@
 						sexyBoxSize = sexyBox.width();
 						slideDistance = sexyBoxSize;
 						drawerSize = ((sexySize + 1) * sexyBoxSize);
-						
-						// slideDrawer.css('width', drawerSize + 'px;');
 						if (currentPos <= 0) {
 							slideDrawer.attr('style', 'left: 0px; ' + 'width: ' + drawerSize + 'px !important;');
 						} else {
 							slideDrawer.attr('style', 'left: -' + (currentPos * slideDistance) +  'px; ' + 'width: ' + drawerSize + 'px !important;');
 						}
+						
+						$('.js .sexySlide-outer, .js .slide li').css('width', sexyBoxSize + 'px;');
+						$('.js .sexySlide-container').css('width', sexyBoxSize +  + 'px;');
 					}
 				});
 				

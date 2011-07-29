@@ -112,19 +112,8 @@
 @media only screen 
 and (min-width : 900px) {
 
-
-/* =Layout */
-
-.js .sexySlide-box {
+.js .sexySlide-box, .js .slide img, .js .sexySlide-outer, .js .slide li {
 	width: 750px;
-}
-
-.js .slide img {
-    width: 750px;
-}
-
-.js .sexySlide-outer {
-    width: 750px;
 }
 
 .js .slide {
@@ -133,10 +122,6 @@ and (min-width : 900px) {
 
 .js .sexySlide-container {
 	width: 770px;
-}
-
-.js .slide li {
-    width: 750px;
 }
 
 }
