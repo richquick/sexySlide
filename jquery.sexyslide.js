@@ -3,7 +3,7 @@
     $.fn.extend({ 
          
         //pass the options variable to the function
-        sexySlider: function(options) {
+        sexySlide: function(options) {
  
  			//Handy for CSS
 			$('body').addClass('js');
@@ -15,7 +15,7 @@
                 iconsStart: true,
 				iconsFade: true,
 				vertical: false,
-				sliderTime: 400
+				slideTime: 400
             }
                  
             var options =  $.extend(defaults, options);
@@ -25,22 +25,22 @@
                 var $this = $(this);
 				
 				// Wrap 
-				$this.wrap('<div class="sexySlider-outer" />').parent().wrap('<div class="sexySlider-container" />').before('<div class="sexySlider-box" />');
+				$this.wrap('<div class="sexySlide-outer" />').parent().wrap('<div class="sexySlide-container" />').before('<div class="sexySlide-box" />');
 				
-				var slideContainer = $('.sexySlider-container'); // So we can reuse it
-				slideContainer.prepend('<div class="sexySlider-links"><a href="#" class="lnk-next">next</a><a href="#" class="lnk-prev">prev</a></div>');
+				var slideContainer = $('.sexySlide-container'); // So we can reuse it
+				slideContainer.prepend('<div class="sexySlide-links"><a href="#" class="lnk-next">next</a><a href="#" class="lnk-prev">prev</a></div>');
 				
                	if (o.thumbs == true) {
 					// Duplicate the slide drawer as another list, so we can use for thumbnails
 					thumbList = $this.html();
-					thumbList = '<ul class="sexySlider-thumbs">' + thumbList + '</ul>';
+					thumbList = '<ul class="sexySlide-thumbs">' + thumbList + '</ul>';
 					slideContainer.append(thumbList);
 					
-					$('.sexySlider-thumbs li img').wrap('<a href="#" />');	
+					$('.sexySlide-thumbs li img').wrap('<a href="#" />');	
 				}
 				
-				// Store the sexySlider box as a variable, so we can calculate the width later
-				var sexyBox = $('.sexySlider-box');
+				// Store the sexySlide box as a variable, so we can calculate the width later
+				var sexyBox = $('.sexySlide-box');
 				
 				// Work out the size of the list
 				var sexySize = $this.children("li").length;
@@ -50,30 +50,30 @@
 				$this.prepend(lastLI);
 				
 				// Duration of the slide, in thousandths of a second
-				slideTime = o.sliderTime;
-				
+				slideTime = o.slideTime;
+			
 				// Set a counter, so we know which portolio piece we're on
 				var currentPos = 1;
-				
-				// Disable sliders - while in animation
-				var theSliders = $("'.lnk-next, '.lnk-prev");
-				theSliders.each(function() {
+			
+				// Disable slides - while in animation
+				var theslides = $(".lnk-next, .lnk-prev");
+				theslides.each(function() {
 					$(this).attr('rel', 'enabled');
 				});
-				function disableSliders() {
-					theSliders.each(function() {
+				function disableslides() {
+					theslides.each(function() {
 						$(this).attr('rel', 'disabled');
-						$('.sexySlider-thumbs li a').attr('rel', 'disabled');
+						$('.sexySlide-thumbs li a').attr('rel', 'disabled');
 					});
 				};
-				function enableSliders() {
-					theSliders.each(function() {
+				function enableslides() {
+					theslides.each(function() {
 						$(this).attr('rel', 'enabled');
-						$('.sexySlider-thumbs li a').attr('rel', 'enabled');
+						$('.sexySlide-thumbs li a').attr('rel', 'enabled');
 					});
 				};
 				
-				// Set the size of the slider drawer
+				// Set the size of the slide drawer
 				var drawerSize = (sexySize + 1) * sexyBox.width();
 				$this.attr('style', 'width: ' + drawerSize + 'px;');
 				
@@ -95,9 +95,9 @@
 				});
 				
 				var cPos = 0;
-				var totalThumbs = $('.sexySlider-thumbs li').length;
+				var totalThumbs = $('.sexySlide-thumbs li').length;
 				
-				 
+				
 				slideMe = function (direction) {
 					// Distance of the slide, in pixels - calculated based on width of the page / holding box
 					var slideDistance = sexyBox.width();
@@ -117,11 +117,11 @@
 						left: direction + '=' + slideDistance
 					}, slideTime, function() {
 						// Animation complete.
-						enableSliders();
+						enableslides();
 					});
 					
 					// Remove current class from all lis
-					$('.sexySlider-thumbs li').removeClass('current');
+					$('.sexySlide-thumbs li').removeClass('current');
 					
 					if (direction == '+') {
 						// Note, this is the opposite "sign" to the slide direction
@@ -133,7 +133,7 @@
 					if (cPos < 1) {
 						cPos = totalThumbs;
 					}
-					var whichChild = '.sexySlider-thumbs li.i' + cPos;
+					var whichChild = '.sexySlide-thumbs li.i' + cPos;
 					$(whichChild).addClass('current');
 				}
 				
@@ -168,7 +168,7 @@
 						left: direction + '=' + slideDistance
 					}, slideTime, function() {
 						// Animation complete.
-						enableSliders();
+						enableslides();
 					});
 					
 					// Update the current Position
@@ -181,20 +181,20 @@
 				
 				
 				//
-				$('.sexySlider-thumbs li a').attr('rel', 'enabled');
+				$('.sexySlide-thumbs li a').attr('rel', 'enabled');
 				
 				// Control what happens when you click a thumbnail
-				$('.sexySlider-thumbs li a').click(function(){
+				$('.sexySlide-thumbs li a').click(function(){
 				
 					// Remove current class from all lis
-					$('.sexySlider-thumbs li').removeClass('current');
+					$('.sexySlide-thumbs li').removeClass('current');
 					
 					// extract the current position from the class
 					tPos = $(this).parent().attr('class').replace(' ', '').replace('current', '').replace('i', '');
 					
 					if (currentPos != tPos) {
 						if($(this).attr("rel") == "enabled") {
-							disableSliders();
+							disableslides();
 							slideTo(tPos);
 						}
 					};
@@ -204,12 +204,13 @@
 					return false;
 				});
 				
-				// Fade the slider buttons out and in (they're on to start with, though)
+				// Fade the slide buttons out and in (they're on to start with, though)
 				
 				var slideButtonNext = $('.lnk-next');
 				var slideButtonPrev = $('.lnk-prev');
 				
-				$('.sexySlider-links').hover(
+				/*
+				$('.sexySlide-links').hover(
 				  function () {
 					slideButtonNext.fadeIn("fast");
 					slideButtonPrev.fadeIn("fast");
@@ -218,12 +219,12 @@
 					slideButtonNext.fadeOut("fast");
 					slideButtonPrev.fadeOut("fast");
 				  }
-				);
+				);*/
 				
 				// Slide an element
 				slideButtonNext.click(function(){
 					if($(this).attr("rel") == "enabled") {
-						disableSliders();	
+						disableslides();	
 						slideMe('-');
 					}
 					return false;
@@ -231,7 +232,7 @@
 				
 				slideButtonPrev.click(function(){
 					if($(this).attr("rel") == "enabled") {
-						disableSliders();    
+						disableslides();	
 						slideMe('+');
 					}
 					return false;
