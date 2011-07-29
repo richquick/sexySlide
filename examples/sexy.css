@@ -29,7 +29,7 @@
     position: relative;
     height: 575px;
     width: 450px;
-    /* overflow: hidden; */
+    overflow: hidden;
     margin-left: 10px;
 }
 

@@ -86,14 +86,12 @@
 						slideDistance = sexyBoxSize;
 						drawerSize = ((sexySize + 1) * sexyBoxSize);
 						
-						slideDrawer.attr('style', 'width: ' + drawerSize + 'px !important;');
+						// slideDrawer.css('width', drawerSize + 'px;');
 						if (currentPos <= 0) {
-							slideDrawer.attr('style', 'left: 0px;');
+							slideDrawer.attr('style', 'left: 0px; ' + 'width: ' + drawerSize + 'px !important;');
 						} else {
-							slideDrawer.attr('style', 'left: -' + (currentPos * slideDistance) +  'px;');
+							slideDrawer.attr('style', 'left: -' + (currentPos * slideDistance) +  'px; ' + 'width: ' + drawerSize + 'px !important;');
 						}
-						
-						
 					}
 				});
 				
