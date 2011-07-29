@@ -25,22 +25,22 @@
                 var $this = $(this);
 				
 				// Wrap 
-				$this.wrap('<div id="sexySlider-outer" />').parent().wrap('<div id="sexySlider-container" />').before('<div id="sexySlider-box" />');
+				$this.wrap('<div class="sexySlider-outer" />').parent().wrap('<div class="sexySlider-container" />').before('<div class="sexySlider-box" />');
 				
-				var slideContainer = $('#sexySlider-container'); // So we can reuse it
-				slideContainer.prepend('<div id="sexySlider-links"><a href="#" id="lnk-next">next</a><a href="#" id="lnk-prev">prev</a></div>');
+				var slideContainer = $('.sexySlider-container'); // So we can reuse it
+				slideContainer.prepend('<div class="sexySlider-links"><a href="#" class="lnk-next">next</a><a href="#" class="lnk-prev">prev</a></div>');
 				
                	if (o.thumbs == true) {
 					// Duplicate the slide drawer as another list, so we can use for thumbnails
 					thumbList = $this.html();
-					thumbList = '<ul id="sexySlider-thumbs">' + thumbList + '</ul>';
+					thumbList = '<ul class="sexySlider-thumbs">' + thumbList + '</ul>';
 					slideContainer.append(thumbList);
 					
-					$('#sexySlider-thumbs li img').wrap('<a href="#" />');	
+					$('.sexySlider-thumbs li img').wrap('<a href="#" />');	
 				}
 				
 				// Store the sexySlider box as a variable, so we can calculate the width later
-				var sexyBox = $('#sexySlider-box');
+				var sexyBox = $('.sexySlider-box');
 				
 				// Work out the size of the list
 				var sexySize = $this.children("li").length;
@@ -56,20 +56,20 @@
 				var currentPos = 1;
 				
 				// Disable sliders - while in animation
-				var theSliders = $("#lnk-next, #lnk-prev");
+				var theSliders = $("'.lnk-next, '.lnk-prev");
 				theSliders.each(function() {
 					$(this).attr('rel', 'enabled');
 				});
 				function disableSliders() {
 					theSliders.each(function() {
 						$(this).attr('rel', 'disabled');
-						$('#sexySlider-thumbs li a').attr('rel', 'disabled');
+						$('.sexySlider-thumbs li a').attr('rel', 'disabled');
 					});
 				};
 				function enableSliders() {
 					theSliders.each(function() {
 						$(this).attr('rel', 'enabled');
-						$('#sexySlider-thumbs li a').attr('rel', 'enabled');
+						$('.sexySlider-thumbs li a').attr('rel', 'enabled');
 					});
 				};
 				
@@ -95,7 +95,7 @@
 				});
 				
 				var cPos = 0;
-				var totalThumbs = $('#sexySlider-thumbs li').length;
+				var totalThumbs = $('.sexySlider-thumbs li').length;
 				
 				 
 				slideMe = function (direction) {
@@ -121,7 +121,7 @@
 					});
 					
 					// Remove current class from all lis
-					$('#sexySlider-thumbs li').removeClass('current');
+					$('.sexySlider-thumbs li').removeClass('current');
 					
 					if (direction == '+') {
 						// Note, this is the opposite "sign" to the slide direction
@@ -133,7 +133,7 @@
 					if (cPos < 1) {
 						cPos = totalThumbs;
 					}
-					var whichChild = '#sexySlider-thumbs li.i' + cPos;
+					var whichChild = '.sexySlider-thumbs li.i' + cPos;
 					$(whichChild).addClass('current');
 				}
 				
@@ -181,13 +181,13 @@
 				
 				
 				//
-				$('#sexySlider-thumbs li a').attr('rel', 'enabled');
+				$('.sexySlider-thumbs li a').attr('rel', 'enabled');
 				
 				// Control what happens when you click a thumbnail
-				$('#sexySlider-thumbs li a').click(function(){
+				$('.sexySlider-thumbs li a').click(function(){
 				
 					// Remove current class from all lis
-					$('#sexySlider-thumbs li').removeClass('current');
+					$('.sexySlider-thumbs li').removeClass('current');
 					
 					// extract the current position from the class
 					tPos = $(this).parent().attr('class').replace(' ', '').replace('current', '').replace('i', '');
@@ -206,10 +206,10 @@
 				
 				// Fade the slider buttons out and in (they're on to start with, though)
 				
-				var slideButtonNext = $('#lnk-next');
-				var slideButtonPrev = $('#lnk-prev');
+				var slideButtonNext = $('.lnk-next');
+				var slideButtonPrev = $('.lnk-prev');
 				
-				$('#sexySlider-links').hover(
+				$('.sexySlider-links').hover(
 				  function () {
 					slideButtonNext.fadeIn("fast");
 					slideButtonPrev.fadeIn("fast");
