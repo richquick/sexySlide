@@ -168,7 +168,7 @@
 					
 					slideDrawer.animate({
 						left: direction + '=' + slideDistance
-					}, slideTime, function() {
+					}, slideTime, function() { 
 						// Animation complete.
 						enableslides();
 					});
