@@ -57,7 +57,7 @@
     position: absolute;
     border: 10px solid #DFDDD9;
     width: 450px;
-    height: 252px;
+    height: 318px;
     left: 0;
     top: 15px;
     padding: 0;
@@ -90,7 +90,7 @@
 
 .js .sexySlide-container .lnk-next, .js .sexySlide-container .lnk-prev {
     position: absolute;
-    top: 120px;
+    bottom: 120px;
     width: 62px;
     height: 48px;
     z-index: 10001;
@@ -131,6 +131,10 @@ and (min-width : 900px) {
 
 .js .sexySlide-box, .js .slide img, .js .sexySlide-outer, .js .slide li {
 	width: 750px;
+}
+
+.js .sexySlide-box {
+	height: 530px;	
 }
 
 .js .slide {

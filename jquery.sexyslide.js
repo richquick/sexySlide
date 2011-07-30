@@ -15,6 +15,7 @@
                 iconsStart: true,
 				iconsFade: true,
 				vertical: false,
+				dots: false,
 				slideTime: 400
             }
                  
